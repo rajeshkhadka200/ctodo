@@ -85,7 +85,11 @@ const Home = () => {
                 <Moon className="icon" />
               )}
             </button>
-            <a href="https://github.com" className="github-link">
+            <a
+              target="_blank"
+              href="https://github.com/rajeshkhadka200/ctodo"
+              className="github-link"
+            >
               <Github className="icon" />
               <span>GitHub</span>
             </a>
@@ -191,12 +195,16 @@ const Home = () => {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-container">
-          <a href="https://github.com" className="github-link">
+          <a
+            target="_blank"
+            href="https://github.com/rajeshkhadka200/ctodo"
+            className="github-link"
+          >
             <Github className="icon" />
             <span>View on GitHub</span>
           </a>
           <p className="footer-text">
-            Built with <span className="heart">❤️</span> by Team.
+            Built with <span className="heart">❤️</span> by Team RSSB
           </p>
         </div>
       </footer>
