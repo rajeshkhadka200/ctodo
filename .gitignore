@@ -1,0 +1,15 @@
+# Ignore macOS system files
+.DS_Store   
+/client/node_modules
+# Ignore environment variable files
+/api/.env.*
+/cli/.env
+
+# Ignore build output directories
+/api/build/
+
+# Ignore node_modules folders
+/api/node_modules/
+/web/node_modules/
+/cli/node_modules/
+

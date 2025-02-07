@@ -1,0 +1,364 @@
+/* Global Styles */
+
+.app {
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
+/* Theme Modes */
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+}
+
+.light-mode {
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+}
+
+/* Navigation */
+.navbar {
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .navbar {
+  background-color: var(--dark-secondary);
+}
+
+.light-mode .navbar {
+  background-color: var(--light-bg);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-text {
+  font-family: monospace;
+  font-size: 1.25rem;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-toggle {
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--dark-secondary);
+  color: var(--text-light);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.github-link:hover {
+  opacity: 0.9;
+}
+
+/* Hero Section */
+.hero {
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  color: var(--primary-color);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: #13111c;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+}
+.dark-mode .download-button {
+  background-color: #ffffffe5;
+}
+.download-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Terminal Window */
+.terminal-window {
+  width: 50%;
+  background-color: #1e1e1e;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: left;
+  line-height: 28px;
+  transition: transform 0.3s ease;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  font-size: 0.875rem;
+  margin: 3rem auto 0;
+  border: 1px solid #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* transform: perspective(1000px) rotateY(-5deg); */
+  font-family: "JetBrains Mono", monospace;
+}
+/* add hover in terminal */
+.terminal-window:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .terminal-window {
+    width: 100%;
+  }
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.terminal-button {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.terminal-button.red {
+  background-color: #ff5f56;
+}
+.terminal-button.yellow {
+  background-color: #ffbd2e;
+}
+.terminal-button.green {
+  background-color: #27c93f;
+}
+
+.terminal-content {
+  color: var(--primary-color);
+  white-space: pre-wrap;
+}
+.terminal-prompt {
+  color: #4eb882;
+}
+
+.terminal-command {
+  color: #4eb882;
+}
+
+.terminal-output {
+  color: #65b0d4;
+  margin-left: 8px;
+}
+
+.terminal-list-item {
+  color: #b48ead;
+  margin-left: 8px;
+}
+
+.terminal-check {
+  color: #4eb882;
+}
+
+/* Getting Started Section */
+.getting-started {
+  padding: 5rem 1rem;
+}
+
+.dark-mode .getting-started {
+  background-color: var(--dark-secondary);
+}
+
+.light-mode .getting-started {
+  background-color: var(--light-secondary);
+}
+
+.section-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--dark-bg);
+}
+
+.light-mode .step-item {
+  background-color: var(--light-bg);
+}
+
+.step-number {
+  color: var(--primary-color);
+  font-family: monospace;
+}
+
+.step-command {
+  font-family: monospace;
+  color: #ff69b4;
+}
+
+.step-arrow {
+  opacity: 0.5;
+}
+
+.step-description {
+  opacity: 0.8;
+}
+
+/* Features Section */
+.features {
+  padding: 5rem 1rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+}
+
+.dark-mode .feature-card {
+  background-color: transparent;
+  border: 1px solid #333;
+}
+
+.light-mode .feature-card {
+  background-color: var(--light-bg);
+  border: 1px solid #eaeaea;
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.feature-description {
+  opacity: 0.8;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.dark-mode .footer {
+  background-color: var(--dark-secondary);
+}
+
+.light-mode .footer {
+  background-color: var(--light-secondary);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer .github-link {
+  display: inline-flex;
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-family: monospace;
+  opacity: 0.8;
+}
+
+.heart {
+  color: #ff4136;
+}
+
+/* Icons */
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .step-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
