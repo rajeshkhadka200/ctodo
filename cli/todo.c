@@ -38,7 +38,6 @@ void displayTasks();
 
 void displayMainMenu(int highlight) {
     system("cls");
-
     const char *menu[] = {
         "Add Task",
         "View Tasks",
@@ -122,6 +121,7 @@ void displayTasks() {
 }
 
 // Function to edit a task
+// Function to edit a task
 void editTask() {
     int taskId;
     int found = 0;
@@ -135,25 +135,56 @@ void editTask() {
             found = 1;
 
             printf("\nEditing Task ID %d\n", taskList[i].id);
+
+            // Edit Title
             printf("Enter New Task Title (current: %s): ", taskList[i].title);
-            fgets(taskList[i].title, sizeof(taskList[i].title), stdin);
-            taskList[i].title[strcspn(taskList[i].title, "\n")] = 0;
+            char tempTitle[100];
+            fgets(tempTitle, sizeof(tempTitle), stdin);
+            tempTitle[strcspn(tempTitle, "\n")] = 0;  // Remove newline character
 
+            if (strlen(tempTitle) > 0) {  // If input is not empty
+                strcpy(taskList[i].title, tempTitle);
+            }
+
+            // Edit Description
             printf("Enter New Task Description (current: %s): ", taskList[i].description);
-            fgets(taskList[i].description, sizeof(taskList[i].description), stdin);
-            taskList[i].description[strcspn(taskList[i].description, "\n")] = 0;
+            char tempDescription[200];
+            fgets(tempDescription, sizeof(tempDescription), stdin);
+            tempDescription[strcspn(tempDescription, "\n")] = 0;  // Remove newline character
 
+            if (strlen(tempDescription) > 0) {  // If input is not empty
+                strcpy(taskList[i].description, tempDescription);
+            }
+
+            // Edit Priority
             printf("Enter New Task Priority (current: %s): ", taskList[i].priority);
-            fgets(taskList[i].priority, sizeof(taskList[i].priority), stdin);
-            taskList[i].priority[strcspn(taskList[i].priority, "\n")] = 0;
+            char tempPriority[10];
+            fgets(tempPriority, sizeof(tempPriority), stdin);
+            tempPriority[strcspn(tempPriority, "\n")] = 0;  // Remove newline character
 
+            if (strlen(tempPriority) > 0) {  // If input is not empty
+                strcpy(taskList[i].priority, tempPriority);
+            }
+
+            // Edit Due Date
             printf("Enter New Due Date (current: %s): ", taskList[i].dueDate);
-            fgets(taskList[i].dueDate, sizeof(taskList[i].dueDate), stdin);
-            taskList[i].dueDate[strcspn(taskList[i].dueDate, "\n")] = 0;
+            char tempDueDate[20];
+            fgets(tempDueDate, sizeof(tempDueDate), stdin);
+            tempDueDate[strcspn(tempDueDate, "\n")] = 0;  // Remove newline character
 
+            if (strlen(tempDueDate) > 0) {  // If input is not empty
+                strcpy(taskList[i].dueDate, tempDueDate);
+            }
+
+            // Edit Category
             printf("Enter New Task Category (current: %s): ", taskList[i].category);
-            fgets(taskList[i].category, sizeof(taskList[i].category), stdin);
-            taskList[i].category[strcspn(taskList[i].category, "\n")] = 0;
+            char tempCategory[20];
+            fgets(tempCategory, sizeof(tempCategory), stdin);
+            tempCategory[strcspn(tempCategory, "\n")] = 0;  // Remove newline character
+
+            if (strlen(tempCategory) > 0) {  // If input is not empty
+                strcpy(taskList[i].category, tempCategory);
+            }
 
             // Ask if the user wants to mark the task as "Completed"
             char statusChoice;
