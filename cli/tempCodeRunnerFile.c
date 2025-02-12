@@ -18,13 +18,12 @@ typedef struct {
     char priority[10];
     char dueDate[20];
     char category[20];
-    char status[20];  // Status will store either "Pending" or "Completed"
+    char status[20];
 } Task;
 
 int taskCount = 0;
 Task taskList[100];
 
-// Function prototypes
 void displayMainMenu(int highlight);
 void addTask();
 void viewTasks();
@@ -32,10 +31,10 @@ void editTask();
 void deleteTask();
 void saveTaskToFile(Task task);
 void loadTasksFromFile();
-void saveAllTasksToFile();
 void exitApp();
 void displayTasks();
 
+// Function to display the main menu
 void displayMainMenu(int highlight) {
     system("cls");
 
@@ -82,11 +81,11 @@ void addTask() {
 
     strcpy(newTask.status, "Pending");
 
-    newTask.id = taskCount + 1;  // Unique ID based on taskCount
+    newTask.id = taskCount + 1; // Unique ID based on taskCount
     taskList[taskCount] = newTask;
     taskCount++;
 
-    saveAllTasksToFile();  // Save all tasks
+    saveTaskToFile(newTask);
 
     printf("\nTask added successfully!\n");
 
@@ -128,7 +127,7 @@ void editTask() {
 
     printf("\nEnter Task ID to edit: ");
     scanf("%d", &taskId);
-    getchar();  // To consume the newline character left by scanf
+    getchar(); // To consume the newline character left by scanf
 
     for (int i = 0; i < taskCount; i++) {
         if (taskList[i].id == taskId) {
@@ -155,20 +154,8 @@ void editTask() {
             fgets(taskList[i].category, sizeof(taskList[i].category), stdin);
             taskList[i].category[strcspn(taskList[i].category, "\n")] = 0;
 
-            // Ask if the user wants to mark the task as "Completed"
-            char statusChoice;
-            printf("Do you want to mark this task as Completed? (y/n): ");
-            statusChoice = getchar();
-            getchar(); // To consume the newline character
-
-            if (statusChoice == 'y' || statusChoice == 'Y') {
-                strcpy(taskList[i].status, "Completed");
-            } else {
-                strcpy(taskList[i].status, "Pending");
-            }
-
-            // After editing, save all tasks to the file
-            saveAllTasksToFile();
+            // After editing, we re-save all tasks to the file
+            saveTaskToFile(taskList[i]);
 
             printf("\nTask edited successfully!\n");
             break;
@@ -190,7 +177,7 @@ void deleteTask() {
 
     printf("\nEnter Task ID to delete: ");
     scanf("%d", &taskId);
-    getchar();  // To consume the newline character left by scanf
+    getchar(); // To consume the newline character left by scanf
 
     for (int i = 0; i < taskCount; i++) {
         if (taskList[i].id == taskId) {
@@ -200,7 +187,7 @@ void deleteTask() {
             char confirm;
             printf("\nAre you sure you want to delete Task ID %d (Title: %s)? (y/n): ", taskList[i].id, taskList[i].title);
             confirm = getchar();
-            getchar();  // To consume the newline character after 'y' or 'n'
+            getchar(); // To consume the newline character after 'y' or 'n'
 
             if (confirm == 'y' || confirm == 'Y') {
                 // Shift tasks down to remove the task
@@ -265,37 +252,31 @@ void loadTasksFromFile() {
 }
 
 void exitApp() {
-    printf("\nExiting the program...\n");
+    printf("\nExiting the application...\n");
 }
 
 int main() {
-    loadTasksFromFile();  // Load tasks from file at the start
-    int choice;
     int highlight = 0;
+    char ch;
+
+    loadTasksFromFile();
 
     while (1) {
         displayMainMenu(highlight);
-        choice = _getch();
 
-        if (choice == 224) {
-            choice = _getch();  // Arrow key pressed
-            if (choice == 72) {  // Up arrow
-                highlight = (highlight == 0) ? 4 : highlight - 1;
-            } else if (choice == 80) {  // Down arrow
-                highlight = (highlight == 4) ? 0 : highlight + 1;
-            }
-        } else if (choice == 13) {  // Enter key
-            if (highlight == 0) {
-                addTask();
-            } else if (highlight == 1) {
-                viewTasks();
-            } else if (highlight == 2) {
-                editTask();
-            } else if (highlight == 3) {
-                deleteTask();
-            } else if (highlight == 4) {
-                exitApp();
-                break;
+        ch = _getch();
+
+        if (ch == 72) { // Up arrow key
+            highlight = (highlight == 0) ? 4 : highlight - 1;
+        } else if (ch == 80) { // Down arrow key
+            highlight = (highlight == 4) ? 0 : highlight + 1;
+        } else if (ch == 13) { // Enter key
+            switch (highlight) {
+                case 0: addTask(); break;
+                case 1: viewTasks(); break;
+                case 2: editTask(); break;
+                case 3: deleteTask(); break;
+                case 4: exitApp(); return 0;
             }
         }
     }
