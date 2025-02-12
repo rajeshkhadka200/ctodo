@@ -134,7 +134,7 @@ const Home = () => {
               {
                 step: 2,
                 command: "$ cd todo.exe",
-                desc: "Initialize your todo list",
+                desc: "Initialize todo app.",
               },
               {
                 step: 3,
