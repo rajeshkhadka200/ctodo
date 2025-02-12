@@ -39,21 +39,21 @@ const TerminalWindow = () => {
       </div>
       <pre className="terminal-content">
         <span className="terminal-prompt">$ </span>
-        <span className="terminal-command">taskmaster --new-task</span>
+        <span className="terminal-command">ctodo --new-task</span>
         <br />
         <span className="terminal-output">&gt;Creating new task...</span>
         <br />
         <span className="terminal-output">&gt;Task added successfully!</span>
         <br />
         <span className="terminal-prompt">$ </span>
-        <span className="terminal-command">taskmaster --list</span>
+        <span className="terminal-command">ctodo --list</span>
         <br />
         <span className="terminal-output">&gt;Displaying all tasks...</span>
         <br />
         <span className="terminal-check">✓ </span>
-        <span className="terminal-list-item">Implement dark mode</span>
+        <span className="terminal-list-item">Complete C Project.</span>
         <br />
-        <span className="terminal-list-item">- Add search functionality</span>
+        <span className="terminal-list-item">- Complete Assignment. </span>
         <br />
         <span className="terminal-list-item">- Write documentation</span>
       </pre>
@@ -133,7 +133,7 @@ const Home = () => {
               },
               {
                 step: 2,
-                command: "$ ./todo init",
+                command: "$ cd todo.exe",
                 desc: "Initialize your todo list",
               },
               {
@@ -142,11 +142,6 @@ const Home = () => {
                 desc: "Add your first task",
               },
               { step: 4, command: "$ ./todo list", desc: "View all tasks" },
-              {
-                step: 5,
-                command: "$ ./todo done 1",
-                desc: "Mark tasks as complete",
-              },
             ].map(({ step, command, desc }) => (
               <div key={step} className="step-item">
                 <span className="step-number">{step}</span>
