@@ -109,7 +109,7 @@ const Home = () => {
             Light and fast task management app, built with pure C.
           </p>
           <div className="download-button-container">
-            <a href="/todo.exe" download={true}>
+            <a href="/ctodo" download={true}>
               <button className="download-button">
                 <Download className="icon" />
                 Download For Windows
