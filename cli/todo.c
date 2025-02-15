@@ -48,7 +48,7 @@ void displayMainMenu(int highlight) {
 
     for (int i = 0; i < 5; i++) {
         if (i == highlight) {
-            printf("-> %s%s%s\n", GREEN, menu[i], RESET);
+            printf("-> %s%s%s\n", CYAN, menu[i], RESET);
         } else {
             printf("   %s\n", menu[i]);
         }
@@ -87,9 +87,9 @@ void addTask() {
 
     saveAllTasksToFile();  // Save all tasks
 
-    printf("\nTask added successfully!\n");
+    printf("\n" GREEN "Task added successfully!" RESET "\n");
 
-    printf("\nPress any key to return to the main menu...\n");
+    printf("\n" YELLOW "Press any key to return to the main menu..." RESET "\n");
     _getch();
 }
 
@@ -101,26 +101,41 @@ void viewTasks() {
         displayTasks();
     }
 
-    printf("\nPress any key to return to the main menu...\n");
+    printf("\n" YELLOW "Press any key to return to the main menu..." RESET"\n");
     _getch();
 }
 
 // Function to display tasks
+// Function to display tasks in a tabular format with proper separation
 void displayTasks() {
-    printf("\n%-4s %-20s %-30s %-10s %-12s %-20s %-10s\n", "ID", "Title", "Description", "Priority", "Due Date", "Category", "Status");
-    for (int i = 0; i < taskCount; i++) {
-        printf("%-4d %-20s %-30s %-10s %-12s %-20s %-10s\n", 
-            taskList[i].id, 
-            taskList[i].title, 
-            taskList[i].description, 
-            taskList[i].priority, 
-            taskList[i].dueDate, 
-            taskList[i].category, 
-            taskList[i].status);
+    printf("\n+----+----------------------+------------------------------+-----------+------------+--------------------+------------+\n");
+printf("| " CYAN "ID" RESET " | " CYAN "Title" RESET "                | " CYAN "Description" RESET "                  | " CYAN "Priority" RESET "  | " CYAN "Due Date" RESET "   | " CYAN "Category" RESET "           | " CYAN "Status" RESET "     |\n");
+       
+for (int i = 0; i < taskCount; i++) {
+        // Colorize based on task status
+        if (strcmp(taskList[i].status, "Completed") == 0) {
+            printf("| %-2d | %-20s | %-28s | %-9s | %-10s | %-18s | %-10s%s%s\n", 
+                taskList[i].id, 
+                taskList[i].title, 
+                taskList[i].description, 
+                taskList[i].priority, 
+                taskList[i].dueDate, 
+                taskList[i].category, 
+                taskList[i].status, GREEN, RESET);  // Green for completed
+        } else {
+            printf("| %-2d | %-20s | %-28s | %-9s | %-10s | %-18s | %-10s%s%s\n", 
+                taskList[i].id, 
+                taskList[i].title, 
+                taskList[i].description, 
+                taskList[i].priority, 
+                taskList[i].dueDate, 
+                taskList[i].category, 
+                taskList[i].status, YELLOW, RESET);  // Yellow for pending
+        }
     }
+    printf("+----+----------------------+------------------------------+-----------+------------+--------------------+------------+\n");
 }
 
-// Function to edit a task
 // Function to edit a task
 void editTask() {
     int taskId;
@@ -134,7 +149,7 @@ void editTask() {
         if (taskList[i].id == taskId) {
             found = 1;
 
-            printf("\nEditing Task ID %d\n", taskList[i].id);
+            printf("\n" YELLOW "Editing Task ID %d" RESET "\n", taskList[i].id);
 
             // Edit Title
             printf("Enter New Task Title (current: %s): ", taskList[i].title);
@@ -201,16 +216,16 @@ void editTask() {
             // After editing, save all tasks to the file
             saveAllTasksToFile();
 
-            printf("\nTask edited successfully!\n");
+            printf("\n" GREEN "Task edited successfully!" RESET "\n");
             break;
         }
     }
 
     if (!found) {
-        printf("\nTask with ID %d not found.\n", taskId);
+        printf("\n" RED "Task with ID %d not found." RESET "\n", taskId);
     }
 
-    printf("\nPress any key to return to the main menu...\n");
+   printf("\n" YELLOW "Press any key to return to the main menu.." RESET "\n");
     _getch();
 }
 
@@ -240,10 +255,10 @@ void deleteTask() {
                 }
                 taskCount--;  // Decrease the task count
 
-                // After deletion, save the remaining tasks back to the file
+                // After deletion, save the remaining tasks to the file
                 saveAllTasksToFile();
 
-                printf("\nTask deleted successfully!\n");
+                printf("\n" GREEN "Task deleted successfully!" RESET "\n");
             } else {
                 printf("\nTask deletion canceled.\n");
             }
@@ -255,11 +270,11 @@ void deleteTask() {
         printf("\nTask with ID %d not found.\n", taskId);
     }
 
-    printf("\nPress any key to return to the main menu...\n");
+    printf("\n" YELLOW "Press any key to return to the main menu..." RESET" \n");
     _getch();
 }
 
-// Function to save all tasks to the file after deletion or editing
+// Function to save all tasks to the file after delete  or editing
 void saveAllTasksToFile() {
     FILE *file = fopen("tasks.csv", "w");
     if (file == NULL) {
@@ -273,14 +288,12 @@ void saveAllTasksToFile() {
 
     fclose(file);
 }
-
 // Function to load tasks from the file
 void loadTasksFromFile() {
     FILE *file = fopen("tasks.csv", "r");
     if (file == NULL) {
         return;
     }
-
     while (fscanf(file, "%d,%99[^,],%199[^,],%9[^,],%19[^,],%19[^,],%19[^,\n]\n", 
                   &taskList[taskCount].id,
                   taskList[taskCount].title,
@@ -330,6 +343,5 @@ int main() {
             }
         }
     }
-
     return 0;
 }
