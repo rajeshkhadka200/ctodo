@@ -1,7 +1,7 @@
 What to include  ?
 
 1. Welcome Slide (should contains app name)
-2. Team details (with Photo (100% rounded) and Name).
+2. Team details (with Photo and Name).
 3. Introduction to Project :
 4. Why this Project ?
 5. ER model of the app. (will be provided later) 
@@ -9,7 +9,3 @@ What to include  ?
 7. Learnings
 8. Refrences (contains the links from where the ref was taken while debugging)
 9.  Thnakyou
-
-Note : All the contents will be provided Later on. Just make a format Ready.
-
-You are requested to create a ppt file incluing these headline. The design should be minimal but visually apealing. play around the ppt file and ppt software to make this visually apealing.
