@@ -12,47 +12,53 @@ A lightweight and efficient task management system with both **Command-Line Inte
 
 - 🔗 **Minimal Dependencies**: The CLI version runs standalone without requiring additional software.
 
-## 📂 Project Structure
-
-
-
 ## 🛠 Installation & Usage
 
 ### CLI Version
 
 ### 1️⃣ Run Executable (Windows)
+
 Simply double-click todo.exe, or run it via the command prompt:
+
 ```sh
 todo.exe
 ```
 
 ### Web Version
+
 ### 1️⃣ Install Dependencies
+
 ```sh
 cd web
 npm install
 ```
 
 ### 2️⃣ Start the Server
-``` sh
+
+```sh
  npm start
 ```
+
 ### 3️⃣ Open in Browser
+
 Go to: http://localhost:3000
 
 ## 📌 Objectives
+
 - Provide a simple CLI-based task manager.
 - Develop a web interface for enhanced usability.
 - Ensure cross-platform compatibility.
 - Maintain an efficient and lightweight system.
 
 ## 🔗 Useful Links
+
 - Project Repository: [GitHub](https://github.com/rajeshkhadka200/ctodo/)
 - Live Demo: [Website](https://todo.rajeshkhadka.info.np/)
 - App Arcitecture : [View](https://excalidraw.com/#json=HjgF2aPgKUmYxZoJwfLnJ,bxjEJU-FEgt7ML0Al6NG4A)
-
+- Project PPT : [View](https://www.canva.com/design/DAGe6TmFUI8/YEHUoKj6gwGBGPZmLkAGIg/view?utm_content=DAGe6TmFUI8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb4adbf1293)
 
 ## 🙌 Thank You!
+
 Feel free to contribute, report issues, or reach out for collaboration! 😊
 
 ```vbnet
